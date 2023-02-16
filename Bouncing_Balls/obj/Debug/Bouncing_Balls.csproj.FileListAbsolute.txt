@@ -1,0 +1,11 @@
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\obj\Debug\Bouncing_Balls.csproj.AssemblyReference.cache
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\obj\Debug\Bouncing_Balls.csproj.SuggestedBindingRedirects.cache
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\obj\Debug\Bouncing_Balls.Form1.resources
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\obj\Debug\Bouncing_Balls.Properties.Resources.resources
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\obj\Debug\Bouncing_Balls.csproj.GenerateResource.cache
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\obj\Debug\Bouncing_Balls.csproj.CoreCompileInputs.cache
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\bin\Debug\Bouncing_Balls.exe.config
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\bin\Debug\Bouncing_Balls.exe
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\bin\Debug\Bouncing_Balls.pdb
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\obj\Debug\Bouncing_Balls.exe
+C:\Users\ferch\OneDrive\Documents\graficacion y videojuegos\Bouncing_Balls\Bouncing_Balls\obj\Debug\Bouncing_Balls.pdb
