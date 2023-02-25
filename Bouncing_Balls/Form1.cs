@@ -18,9 +18,10 @@ namespace Bouncing_Balls
 
         private Bitmap bmp;
         private Graphics g;
-        private int NumBalls=10;
+        private int NumBalls;
         private Random rand = new Random();
         private List<Balls> balls = new List<Balls>();
+        bool ButtonP=false;
         public Form1()
         {
             InitializeComponent();           
@@ -28,30 +29,17 @@ namespace Bouncing_Balls
             bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             g = Graphics.FromImage(bmp);
             pictureBox1.Image = bmp;
-
-            // Create some balls
-            for (int i = 0; i < NumBalls; i++)
-            { 
-                
-                this.balls.Add(new Balls
-                {
-                    ballsize = rand.Next(20, 50),
-                    X = rand.Next(pictureBox1.Width - ballsize),
-                    Y = rand.Next(pictureBox1.Height - ballsize),
-                    DX = rand.Next(5, 10),
-                    DY = rand.Next(5, 10),
-                    Color = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256))
-                });
-            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           foreach (var ball in this.balls)
+            if (ButtonP == true)
             {
-                ball.X += ball.DX;
-                ball.Y += ball.DY;
-            }
+                foreach (var ball in this.balls)
+                {
+                    ball.X += ball.DX;
+                    ball.Y += ball.DY;
+                }
 
                 // Check for collision between balls
                 for (int i = 0; i < balls.Count; i++)
@@ -67,6 +55,7 @@ namespace Bouncing_Balls
                         // Calculate the distance that the balls will travel in the next iteration of the loop
                         double travelDistance = ball1.ballsize / 2 + ball2.ballsize / 2;
 
+
                         // Check if the balls will collide in the next iteration of the loop
                         if (distance <= travelDistance)
                         {
@@ -79,6 +68,25 @@ namespace Bouncing_Balls
                             ball1.Y -= dy / 2;
                             ball2.X += dx / 2;
                             ball2.Y += dy / 2;
+
+                            // Calculate the new velocities and directions of the balls after the collision
+                            double angle = Math.Atan2(ball2.Y - ball1.Y, ball2.X - ball1.X);
+                            double sin = Math.Sin(angle);
+                            double cos = Math.Cos(angle);
+
+                            double vx1 = ball1.DX * cos + ball1.DY * sin;
+                            double vy1 = ball1.DY * cos - ball1.DX * sin;
+                            double vx2 = ball2.DX * cos + ball2.DY * sin;
+                            double vy2 = ball2.DY * cos - ball2.DX * sin;
+
+                            double temp = vx1;
+                            vx1 = vx2;
+                            vx2 = temp;
+
+                            ball1.DX = vx1 * cos - vy1 * sin;
+                            ball1.DY = vy1 * cos + vx1 * sin;
+                            ball2.DX = vx2 * cos - vy2 * sin;
+                            ball2.DY = vy2 * cos + vx2 * sin;
                         }
                     }
                 }
@@ -97,9 +105,9 @@ namespace Bouncing_Balls
                         ball.DY = -ball.DY;
                         ball.Y = ball.Y < ball.ballsize / 2 ? ball.ballsize / 2 : pictureBox1.Height - ball.ballsize / 2;
                     }
-                pictureBox1.Invalidate();
+                    pictureBox1.Invalidate();
+                }
             }
-
            // Draw the balls
             drawBalls();
             
@@ -118,6 +126,28 @@ namespace Bouncing_Balls
             }
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.balls.Clear();
+            pictureBox1.Invalidate();
+
+            ButtonP = true;
+            NumBalls = int.Parse(textBox1.Text);
+
+            // Create some balls
+            for (int i = 0; i < NumBalls; i++)
+            {
+
+                this.balls.Add(new Balls
+                {
+                    ballsize = rand.Next(20, 60),
+                    X = rand.Next(pictureBox1.Width - ballsize),
+                    Y = rand.Next(pictureBox1.Height - ballsize),
+                    DX = rand.Next(5, 10),
+                    DY = rand.Next(5, 10),
+                    Color = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256))
+                });
+            }
+        }
     }
 }
